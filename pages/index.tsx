@@ -13,8 +13,8 @@ export default function Home() {
     window.addEventListener("scroll", () => {
       let value = window.scrollY;
       if (zuck && elon) {
-        zuck.style.bottom = value * 0.2 + "px";
-        elon.style.bottom = value * 0.2 + "px";
+        zuck.style.bottom = value * 0.5 + "px";
+        elon.style.bottom = value * 0.5 + "px";
       }
     });
   }, [zuckRef.current, elonRef.current]);

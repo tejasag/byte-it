@@ -42,6 +42,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  Bets          Bets[]
+  Message       Message[]
 }
 
 model VerificationToken {
@@ -51,4 +53,21 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Bets {
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  userId  String @db.ObjectId
+  amount  Int
+  fighter String
+  user    User   @relation(fields: [userId], references: [id])
+}
+
+model Message {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId
+  content   String
+  createdAt DateTime @updatedAt
+  room      String
+  user      User     @relation(fields: [userId], references: [id])
 }

@@ -106,9 +106,9 @@ export default function Bet() {
   const [selected, setSelected] = useState<"zuck" | "musk" | "">("");
   const text =
     selected === "" ? "Select your fighter!" : data[selected]["name"];
-  const { status } = useSession();
+  const { data: session } = useSession();
 
-  if (status === "unauthenticated")
+  if (!session)
     return (
       <div>
         <Navbar />

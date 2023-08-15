@@ -5,10 +5,7 @@ const data: {
   [name: string]: {
     name: string;
     stats: {
-      height: string;
-      weight: string;
-      reach: string;
-      legReach: string;
+      [key: string]: string;
     };
   };
 } = {
@@ -55,11 +52,11 @@ export default function Bet() {
         <div className="header-2 text-white transition-all">{text}</div>
         {selected != "" ? (
           <div className="tilt text-white items-center flex flex-row">
-            {Object.keys(data[selected].stats).map((x, i) => (
-              <div className="items-center flex flex-col mx-4">
+            {Object.keys(data[selected].stats).map((x: any, i) => (
+              <div className="items-center flex flex-col mx-4" key={i}>
                 <div className="text-md text-gray-600">{x}</div>
                 <div className="text-xl text-white">
-                  {data[selected].stats[x] as string}
+                  {data[selected]["stats"][x]}
                 </div>
               </div>
             ))}

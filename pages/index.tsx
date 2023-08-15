@@ -3,20 +3,21 @@ import Navbar from "@/components/Navbar";
 import { useEffect, useRef } from "react";
 
 export default function Home() {
-  const zuckRef = useRef();
-  const elonRef = useRef();
-  const textRef = useRef();
+  const zuckRef = useRef<HTMLImageElement>(null);
+  const elonRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    let zuck = zuckRef.current;
-    let elon = elonRef.current;
+    let zuck = zuckRef.current as unknown as HTMLImageElement;
+    let elon = elonRef.current as unknown as HTMLImageElement;
 
     window.addEventListener("scroll", () => {
       let value = window.scrollY;
-      zuck.style.bottom = value * 0.2 + "px";
-      elon.style.bottom = value * 0.2 + "px";
+      if (zuck && elon) {
+        zuck.style.bottom = value * 0.2 + "px";
+        elon.style.bottom = value * 0.2 + "px";
+      }
     });
-  }, [zuckRef.current, elonRef.current, textRef.current]);
+  }, [zuckRef.current, elonRef.current]);
 
   return (
     <>
@@ -27,10 +28,7 @@ export default function Home() {
 
       <main className="flex flex-col items-center justify-center">
         <Navbar />
-        <div
-          ref={textRef}
-          className="texts flex flex-col justify-center items-center text-white"
-        >
+        <div className="texts flex flex-col justify-center items-center text-white">
           <div className=" header">Zuckerberg</div>
           <div className="text-lg">vs.</div>
           <div className=" header">Musk</div>

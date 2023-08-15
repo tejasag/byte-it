@@ -20,6 +20,7 @@
 body {
   background-color: rgb(17, 17, 17);
   overflow-x: hidden;
+  background-image: url("/noise.svg");
 }
 
 .bg {

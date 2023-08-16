@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
 const data: {
@@ -140,6 +140,7 @@ export default function Bet() {
     return (
       <div className="bet">
         <Navbar />
+        <ToastContainer />
         <div
           className={`flex flex-col justify-center m-10 items-center ${
             selected === "musk"

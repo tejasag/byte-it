@@ -3,7 +3,6 @@ import { getSession, useSession } from "next-auth/react";
 import prisma from "@/lib/prisma";
 import ChatRoom from "@/components/ChatRoom";
 import Link from "next/link";
-import { NextRequest, NextResponse } from "next/server";
 
 export default function Club({ bet, messages }: { bet: any; messages: any[] }) {
   const { data: session } = useSession();

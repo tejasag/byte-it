@@ -47,15 +47,16 @@ export default function Home() {
           </div>
           <div className="text-xl mx-[10rem] text-center my-5">
             What started as a mere joke has become one of the biggest rivalries
-            on the internet. Elon Musk and Mark Zuckerberg, two of the world's
-            biggest businessmen have decided to have a real life boxing match.
-            While both our champions train hard for the upcoming fight, we need
-            the event organised well in advance. The world loves gambling, and
-            so a legal betting system is needed, the arena where these two
-            billionaires fight has to be prepared for seating thousands of
-            people. Fans need a place to talk to each other, and all of this
-            needs to be done fast. Here comes our company, EZ to provide all
-            these necessities as fast as possible (3 days to be exact)
+            on the internet. Elon Musk and Mark Zuckerberg, two of the
+            world&apos;s biggest businessmen have decided to have a real life
+            boxing match. While both our champions train hard for the upcoming
+            fight, we need the event organised well in advance. The world loves
+            gambling, and so a legal betting system is needed, the arena where
+            these two billionaires fight has to be prepared for seating
+            thousands of people. Fans need a place to talk to each other, and
+            all of this needs to be done fast. Here comes our company, EZ to
+            provide all these necessities as fast as possible (3 days to be
+            exact)
           </div>
         </div>
       </main>

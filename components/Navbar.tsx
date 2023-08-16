@@ -8,7 +8,7 @@ const items = [
   },
   {
     name: "About",
-    link: "/",
+    link: "/#about",
   },
   { name: "Place Bets", link: "/bet" },
   {

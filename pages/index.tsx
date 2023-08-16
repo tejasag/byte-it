@@ -45,7 +45,7 @@ export default function Home() {
               of the century.
             </span>
           </div>
-          <div className="text-xl mx-[10rem] text-center my-5">
+          <div className="about text-xl mx-[10rem] text-center my-5" id="about">
             What started as a mere joke has become one of the biggest rivalries
             on the internet. Elon Musk and Mark Zuckerberg, two of the
             world&apos;s biggest businessmen have decided to have a real life

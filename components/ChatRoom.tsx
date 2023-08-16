@@ -37,7 +37,7 @@ export default function ChatRoom({
           {messages.map((x: any, i: number) => (
             <div
               key={i}
-              className="flex flex-row justify-center items-center my-3"
+              className="flex flex-row justify-start items-center my-3"
             >
               <img
                 src={x.user.image}

@@ -39,18 +39,7 @@ function BetBox({ fighter }: { fighter: Fighter }) {
   const { data: session } = useSession();
   const [amount, setAmount] = useState<string>();
   const handleBet = async () => {
-    toast.success("Congrats! You bet $" + amount + " on " + fighter, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "dark",
-    });
-
-    await fetch(`/api/create/bet`, {
+    let result = await fetch(`/api/create/bet`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -58,7 +47,30 @@ function BetBox({ fighter }: { fighter: Fighter }) {
         email: session?.user!.email,
         fighter,
       }),
-    });
+    }).then((res) => res.json());
+
+    if (result.status === "warn")
+      toast.warn(result.message, {
+        position: "top-right",
+        autoClose: 8000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    else
+      toast.success(result.message, {
+        position: "top-right",
+        autoClose: 8000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
 
     setAmount("");
   };

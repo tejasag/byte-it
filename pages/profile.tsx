@@ -1,8 +1,9 @@
 import Navbar from "@/components/Navbar";
-import { useSession } from "next-auth/react";
+import { useSession, getSession } from "next-auth/react";
 import Link from "next/link";
+import prisma from "@/lib/prisma";
 
-export default function Profile() {
+export default function Profile({ bet }: { bet: any }) {
   const { data: session } = useSession();
 
   return (
@@ -15,6 +16,18 @@ export default function Profile() {
           {session?.user!.email}
         </div>
 
+        <div className="flex flex-col my-10 justify-center items-center">
+          <div className="text-md text-gray-600">Current bets on:</div>
+          {bet ? (
+            <div className="text-2xl text-white">
+              {bet.fighter === "zuck" ? "Mark Zuckerberg" : "Elon Musk"} of $
+              {bet.amount}
+            </div>
+          ) : (
+            "No one"
+          )}
+        </div>
+
         <Link href="/api/auth/signout">
           <div className="m-5 px-7 py-4 text-xl rounded-md bg-gray-600 text-white">
             Sign Out
@@ -24,3 +37,31 @@ export default function Profile() {
     </>
   );
 }
+
+export const getServerSideProps = async () => {
+  const session = await getSession();
+
+  let prev = await prisma.bets.findMany({
+    where: {
+      user: {
+        is: {
+          email: session?.user!.email,
+        },
+      },
+    },
+  });
+
+  if (prev.length > 0) {
+    return {
+      props: {
+        bet: prev[0],
+      },
+    };
+  } else {
+    return {
+      props: {
+        bet: null,
+      },
+    };
+  }
+};

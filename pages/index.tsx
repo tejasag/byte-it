@@ -42,8 +42,7 @@ export default function Home() {
           <div className="header-2 mt-[10rem]">
             Fight?{" "}
             <span className="underline underline-offset-3">
-              of the century
-              <span className="text-red-500">.</span>
+              of the century.
             </span>
           </div>
           <div className="text-xl mx-[10rem] text-center my-5">

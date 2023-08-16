@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { useSession, getSession } from "next-auth/react";
 import Link from "next/link";
 import prisma from "@/lib/prisma";
+import { NextRequest } from "next/server";
 
 export default function Profile({ bet }: { bet: any }) {
   const { data: session } = useSession();
@@ -24,7 +25,7 @@ export default function Profile({ bet }: { bet: any }) {
               {bet.amount}
             </div>
           ) : (
-            "No one"
+            <div className="text-white">No one</div>
           )}
         </div>
 
@@ -38,8 +39,8 @@ export default function Profile({ bet }: { bet: any }) {
   );
 }
 
-export const getServerSideProps = async () => {
-  const session = await getSession();
+export const getServerSideProps = async ({ req }: { req: any }) => {
+  const session = await getSession({ req });
 
   let prev = await prisma.bets.findMany({
     where: {

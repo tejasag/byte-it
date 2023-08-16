@@ -33,7 +33,7 @@ export default function ChatRoom({
   return (
     <>
       <div className="bg-gray-900 rounded-xl min-h-[70vh] w-full max-w-[80vw] flex-1 mx-10 border-4 border-solid border-gray-600 flex flex-col">
-        <div className="chat flex-1">
+        <div className="chat flex-1 overflow-y-scroll">
           {messages.map((x: any, i: number) => (
             <div
               key={i}
